@@ -1,8 +1,8 @@
 ---
-title: vimで式の結果をsourceする方法
+title: "vimで式の結果をsourceする方法"
 date: 2020-02-06
-keywords: [vim]
-
+tag:
+    - "vim"
 ---
 
 ハマったので書き残しておく。

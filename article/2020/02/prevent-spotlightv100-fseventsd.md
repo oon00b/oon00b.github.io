@@ -1,8 +1,8 @@
 ---
-title: USBメモリー内にメタデータファイル(.Spotlight-V100/&.fseventsd/)が作られるのを阻止する
+title: "USBメモリー内にメタデータファイル(.Spotlight-V100/&.fseventsd/)が作られるのを阻止する"
 date: 2020-02-20
-keywords: [macOS]
-
+tag:
+    - "macOS"
 ---
 
 macにUSBメモリーを繋いだ際に、メモリー内に`.Spotlight-V100/`や`.fseventsd/`のようなファイルが作られるが、邪魔なので阻止したい。色々調べてみたが、`.Spotlight-V100/`と`.fseventsd/`を作成しているプロセス(`mds`と`fseventsd`)を止める以外に方法が見つからなかったので、その方法をメモしておく。環境は`macOS 10.14.6`
