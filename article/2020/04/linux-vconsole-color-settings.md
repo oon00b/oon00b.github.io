@@ -40,5 +40,5 @@ vt.default_red=7,220,133,181,38,211,42,238,0,203,88,101,131,108,147,253 vt.defau
 
 ## 参考
 * <https://www.kernel.org/doc/Documentation/admin-guide/kernel-parameters.txt>
-* [`man 4 console_codes`](http://http://man7.org/linux/man-pages/man4/console_codes.4.html)
+* [`console_codes(4)`](http://man7.org/linux/man-pages/man4/console_codes.4.html)
 * [User:Isacdaavid/Linux Console - ArchWiki](https://wiki.archlinux.org/index.php/User:Isacdaavid/Linux_Console#Color_Palette)
