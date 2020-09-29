@@ -1,7 +1,7 @@
 ---
 title: "Arch Linuxでelonaを動かす方法"
 date: 2020-06-13
-tag:
+tags:
     - "Arch Linux"
     - "Wine"
     - "Game"

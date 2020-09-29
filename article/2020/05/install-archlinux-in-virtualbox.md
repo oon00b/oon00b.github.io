@@ -1,7 +1,7 @@
 ---
 title: "VirtualBoxにArch Linuxをインストールする"
 date: 2020-5-18
-tag:
+tags:
     - "Arch Linux"
     - "VirtualBox"
     - "GNU/Linux"

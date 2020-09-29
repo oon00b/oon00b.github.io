@@ -1,7 +1,7 @@
 ---
 title: "Linuxの仮想コンソールの色を設定する"
 date: 2020-04-19
-tag:
+tags:
     - "Linux"
 ---
 

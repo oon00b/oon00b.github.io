@@ -1,7 +1,7 @@
 ---
 title: "bash,zshが起動時に読み込む設定ファイル"
 date: 2020-09-07
-tag:
+tags:
     - "bash"
     - "zsh"
 ---

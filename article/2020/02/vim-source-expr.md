@@ -1,7 +1,7 @@
 ---
 title: "vimで式の結果をsourceする方法"
 date: 2020-02-06
-tag:
+tags:
     - "vim"
 ---
 

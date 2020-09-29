@@ -1,7 +1,7 @@
 ---
 title: "[macOS]USBメモリー内に.Spotlight-V100と.fseventsdを作らせないようにする"
 date: 2020-02-20
-tag:
+tags:
     - "macOS"
 ---
 
