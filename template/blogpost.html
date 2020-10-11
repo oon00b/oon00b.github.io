@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://creativecommons.org/licenses/by/4.0/" rel="license">
+<title>$title$</title>
+<link href="/css/blogpost.css" rel="stylesheet">
+<link href="/css/highlight.css" rel="stylesheet">
+</head>
+<body>
+
+<main class="main">
+<article class='post'>
+
+<header class="post-header">
+    <h1 class="post-title"><a href="$url$">$title$</a></h1>
+
+    <nav class="post-meta">
+        <time class="post-date" datetime="$date$">$date$</time>
+        $if(tags)$
+        <span class="post-tags">tags: $for(tags)$$tag$$sep$, $endfor$</span>
+        $endif$
+    </nav>
+</header>
+
+<div class="post-body">$body$</div>
+
+</article>
+</main>
+
+<footer class="footer">
+この文書は<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">クリエイティブ・コモンズ 表示 4.0 国際 ライセンス</a>の下に提供されています。
+</footer>
+
+</body>
+</html>

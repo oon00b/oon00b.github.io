@@ -1,2 +1,6 @@
-draft/
-build/
+# hakyll
+_site/
+_cache/
+
+# stack
+.stack-work/

@@ -1,0 +1,12 @@
+name: "site"
+
+dependencies:
+  - "base"
+  - "hakyll"
+  - "skylighting-core"
+  - "hakyll-sass"
+
+source-dirs: "src"
+
+executable:
+  main: "Main.hs"
