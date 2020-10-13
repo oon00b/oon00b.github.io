@@ -15,7 +15,7 @@ jobs:
       - name: "checkout master"
         uses: "actions/checkout@v2"
         with:
-          repository: "master"
+          ref: "master"
 
       - name: "build site"
         run: "stack build && stack exec site build"
