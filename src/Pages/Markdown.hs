@@ -19,7 +19,7 @@ mdCompiler path2temp ctx = pandocCompiler
 
 buildMarkdown :: Rules()
 buildMarkdown = do
-    match (fromGlob "**/index.md") $ do
+    match (fromGlob "**/index.md" .||. fromGlob "markdown/404.md") $ do
         route mdRoute
         compile $ mdCompiler "template/default.html" defaultContext
 
