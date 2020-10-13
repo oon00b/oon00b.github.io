@@ -24,8 +24,15 @@ jobs:
       - name: "deploy"
         uses: "peaceiris/actions-gh-pages@v3"
         with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          github_token: "${{ secrets.GITHUB_TOKEN }}"
           publish_dir: "./_site"
           publish_branch: "build"
           enable_jekyll: false
           allow_empty_commit: true
+
+      # https://github.com/actions/cache
+      - name: "cache ~/.stack"
+        uses: "actions/cache@v2"
+        with:
+          path: "~/.stack"
+          key: "stack-${{ hashFiles('stack.yaml', 'package.yaml') }}"
