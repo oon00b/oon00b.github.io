@@ -1,0 +1,29 @@
+name: "deploy"
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  deployment:
+    name: "deployment"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "checkout master"
+        uses: "actions/checkout@v2"
+        with:
+          repository: "master"
+
+      - name: "build site"
+        run: "stack build && stack exec site build"
+
+      # https://github.com/peaceiris/actions-gh-pages
+      - name: "deploy"
+        uses: "peaceiris/actions-gh-pages@v3"
+        with:
+          github-token: ""
+          publish_dir: "./_site"
+          publish_branch: "build"
+          enable_jekyll: false
+          allow_empty_commit: true
