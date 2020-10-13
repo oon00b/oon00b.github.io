@@ -24,7 +24,7 @@ jobs:
       - name: "deploy"
         uses: "peaceiris/actions-gh-pages@v3"
         with:
-          github-token: ""
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
           publish_dir: "./_site"
           publish_branch: "build"
           enable_jekyll: false
