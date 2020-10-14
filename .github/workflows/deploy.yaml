@@ -17,6 +17,13 @@ jobs:
         with:
           ref: "master"
 
+      # https://github.com/actions/cache
+      - name: "cache ~/.stack"
+        uses: "actions/cache@v2"
+        with:
+          path: "~/.stack"
+          key: "stack-${{ hashFiles('stack.yaml', 'package.yaml') }}"
+
       - name: "build site"
         run: "stack build && stack exec site build"
 
@@ -29,10 +36,3 @@ jobs:
           publish_branch: "build"
           enable_jekyll: false
           allow_empty_commit: true
-
-      # https://github.com/actions/cache
-      - name: "cache ~/.stack"
-        uses: "actions/cache@v2"
-        with:
-          path: "~/.stack"
-          key: "stack-${{ hashFiles('stack.yaml', 'package.yaml') }}"
