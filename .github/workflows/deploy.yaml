@@ -1,6 +1,11 @@
 name: "deploy"
 
 on:
+
+  schedule:
+    # cacheが消えないよう定期的に実行する
+    - cron: "* * */6 * *"
+
   push:
     branches:
       - "master"
