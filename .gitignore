@@ -4,3 +4,5 @@ _cache/
 
 # stack
 .stack-work/
+stack.yaml.lock
+site.cabal
