@@ -1,0 +1,26 @@
+@mixin main {
+    > * {
+        max-width: 95%;
+        margin: 2em auto;
+    }
+}
+
+@mixin post {
+    &-title {
+        font-size: 1.3em;
+        margin: 0;
+    }
+
+    &-meta {
+        display: flex;
+        flex-wrap: wrap;
+
+        > * {
+            display: block;
+        }
+    }
+
+    &-date {
+        margin-right: 2em;
+    }
+}

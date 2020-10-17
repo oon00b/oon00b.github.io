@@ -1,0 +1,6 @@
+@import "common.scss";
+@import "blocks.scss";
+
+.main {
+    @include main;
+}

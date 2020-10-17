@@ -17,7 +17,8 @@ scssCompiler = Sass.sassCompilerWith opt
     }
 
 highlightCssCompiler :: Compiler (Item String)
-highlightCssCompiler = loadBody (fromFilePath "skylighting/theme/solarized-dark.theme")
+highlightCssCompiler =
+    loadBody (fromFilePath "skylighting/theme/solarized-dark.theme")
     >>= return . Sky.parseTheme
     >>= return . either (const Sky.breezeDark) (\a -> a)
     >>= return . Sky.styleToCss

@@ -1,4 +1,4 @@
-module Pages.CompressHtml (
+module Util.CompressHtml (
     compressHtml
 ) where
 

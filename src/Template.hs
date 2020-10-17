@@ -1,6 +1,6 @@
-module Pages.Template (
+module Template (
     tagsContext
-  , buildTemplate
+    , buildTemplate
 ) where
 
 import Hakyll

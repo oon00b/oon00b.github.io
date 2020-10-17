@@ -23,11 +23,15 @@ jobs:
           ref: "master"
 
       # https://github.com/actions/cache
-      - name: "cache ~/.stack"
+      - name: "cache ~/.stack, .stack-work"
         uses: "actions/cache@v2"
         with:
-          path: "~/.stack"
+          path:
+            - "~/.stack"
+            - ".stack-work"
           key: "stack-${{ hashFiles('stack.yaml', 'package.yaml') }}"
+          restore-keys:
+            - "stack-"
 
       - name: "build site"
         run: "stack build && stack exec site build"
@@ -39,5 +43,3 @@ jobs:
           github_token: "${{ secrets.GITHUB_TOKEN }}"
           publish_dir: "./_site"
           publish_branch: "build"
-          enable_jekyll: false
-          allow_empty_commit: true
