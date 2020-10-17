@@ -5,7 +5,6 @@ dependencies:
   - "hakyll"
   - "skylighting-core"
   - "hakyll-sass"
-  - "network-uri"
 
 source-dirs: "src"
 

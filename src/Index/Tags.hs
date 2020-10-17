@@ -8,7 +8,10 @@ import Util
 import Index
 
 tagPageId :: String -> Identifier
-tagPageId tag = fromFilePath $ "blog/tags/" ++ (percentEncode tag) ++ "/index.html"
+tagPageId tag =
+    fromFilePath $ "blog/tags/" ++ t ++ "/index.html"
+    where t = replaceAll "/" (const "-") tag
+
 
 buildTagIndex :: Rules()
 buildTagIndex = do
