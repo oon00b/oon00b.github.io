@@ -27,8 +27,8 @@ jobs:
         uses: "actions/cache@v2"
         with:
           path: |
-            "~/.stack
-            .stack-work"
+            ~/.stack
+            .stack-work
           key: "stack-${{ hashFiles('stack.yaml', 'package.yaml') }}"
           restore-keys: "stack-"
 
