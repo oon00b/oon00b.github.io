@@ -5,6 +5,7 @@ dependencies:
   - "hakyll"
   - "skylighting-core"
   - "hakyll-sass"
+  - "containers"
 
 source-dirs: "src"
 
