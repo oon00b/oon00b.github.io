@@ -5,39 +5,44 @@ module Index.Archives (
 import Hakyll
 
 import qualified Data.Map.Lazy as Map
-import qualified Data.Set as Set
+
+import qualified Data.Time as Time
+
+import Data.List
 
 import Control.Monad
 
 import Util
 import Index
 
-type Archives = Map.Map (String, String) (Set.Set Identifier)
+type Archives = Map.Map String [Identifier]
 
-getArchives :: MonadMetadata m => m Archives
+getArchives :: (MonadMetadata m, MonadFail m) => m Archives
 getArchives = getMatches postPattern
-    >>= return . foldr insertArchive Map.empty
+    >>= mapM archivesElem
+    >>= return . Map.fromListWith union
 
-insertArchive :: Identifier -> Archives -> Archives
-insertArchive post archives =
-    Map.insertWith Set.union (getYearAndMonth post) (Set.singleton post) archives
+archivesElem :: (MonadMetadata m, MonadFail m) => Identifier -> m (String, [Identifier])
+archivesElem post = do
+    ym <- getYearAndMonth post
+    return (ym, [post])
 
-getYearAndMonth :: Identifier -> (String, String)
-getYearAndMonth post = case splitAll "/" $ toFilePath post of
-    (_md:_blog:yyyy:mm:_xs) -> (yyyy, mm)
-    _  -> error "記事は\"markdown/blog/YYYY/MM/\"内に置いてください"
+getYearAndMonth :: (MonadMetadata m, MonadFail m) => Identifier -> m String
+getYearAndMonth post = getItemUTC Time.defaultTimeLocale post
+    >>= return . Time.formatTime Time.defaultTimeLocale "%Y/%m" . Time.utctDay
 
-buildYearlyArchives :: String -> Set.Set Identifier -> Rules()
-buildYearlyArchives year posts =
-    create [fromFilePath $ "blog/" ++ year ++ "/index.html"] $ do
+archivesRules :: Archives -> Rules()
+archivesRules ac = forM_ (Map.toList ac) archivesElemRules
+
+archivesElemRules :: (String, [Identifier]) -> Rules()
+archivesElemRules (date, posts) =
+    create [fromFilePath $ "blog/" ++ date ++ "/index.html"] $ do
         route idRoute
-        compile $ postIndexCompiler ("Archive: " ++ year) $ fromList $ Set.toList posts
+        compile $ postIndexCompiler ("Archive: " ++ date) $ fromList posts
 
-buildMonthlyArchives :: String -> String -> Set.Set Identifier -> Rules()
-buildMonthlyArchives year month posts =
-    create [fromFilePath $ "blog/" ++ year ++ "/" ++ month ++ "/index.html"] $ do
-        route idRoute
-        compile $ postIndexCompiler ("Archive: " ++ year ++ "/" ++ month) $ fromList $ Set.toList posts
+toYearly :: Archives -> Archives
+toYearly ac =
+    Map.fromListWith union $ map (\(date, posts) -> (takeWhile (\a -> a /= '/') date, posts)) $ Map.toList ac
 
 buildArchives :: Rules()
 buildArchives = do
@@ -45,5 +50,7 @@ buildArchives = do
         route idRoute
         compile $ postIndexCompiler "Blog" postPattern
 
-    archives <- getArchives
-    forM_ (Map.toList archives) (\((year, month), posts) -> buildMonthlyArchives year month posts)
+    monthly <- getArchives
+    archivesRules monthly
+
+    archivesRules $ toYearly monthly

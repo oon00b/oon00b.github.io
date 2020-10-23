@@ -7,15 +7,15 @@ import Hakyll
 import Util
 import Index
 
-tagPageId :: String -> Identifier
-tagPageId tag =
+tagsId :: String -> Identifier
+tagsId tag =
     fromFilePath $ "blog/tags/" ++ t ++ "/index.html"
     where t = replaceAll "/" (const "-") tag
 
 buildTagIndex :: Rules()
 buildTagIndex = do
-    tags <- buildTags postPattern tagPageId
+    tags <- buildTags postPattern tagsId
     tagsRules tags
         (\tag posts -> do
             route idRoute
-            compile $ postIndexCompiler ("tag: " ++ tag) posts)
+            compile $ postIndexCompiler ("Tag: " ++ tag) posts)

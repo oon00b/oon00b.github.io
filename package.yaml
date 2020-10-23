@@ -6,6 +6,7 @@ dependencies:
   - "skylighting-core"
   - "hakyll-sass"
   - "containers"
+  - "time"
 
 source-dirs: "src"
 

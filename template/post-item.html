@@ -1,0 +1,9 @@
+<article class="post">
+    <h2 class="post-title"><a href="$url$">$title$</a></h2>
+    <time class="post-date" datetime="$date$">$date$</time>
+    $if(tags)$
+    <div class="post-tags">
+        tags: $for(tags)$[$tag$]$sep$ $endfor$
+    </div>
+    $endif$
+</article>

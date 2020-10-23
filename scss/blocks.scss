@@ -11,16 +11,7 @@
         margin: 0;
     }
 
-    &-meta {
-        display: flex;
-        flex-wrap: wrap;
-
-        > * {
-            display: block;
-        }
-    }
-
     &-date {
-        margin-right: 2em;
+        display: block;
     }
 }
