@@ -2,14 +2,19 @@ import Hakyll
 
 import Css
 import Pages
-import Index.Tags
-import Index.Archives
-import Template
+import Index
 
 main :: IO()
 main = hakyll $ do
+    -- css
     buildCss
+
+    -- pages & blog posts
     buildPages
-    buildTagIndex
-    buildArchives
-    buildTemplate
+
+    -- blog index
+    buildIndex
+
+    -- template
+    match (fromGlob "template/*.html") $ compile templateCompiler
+    match (fromGlob "template/snippet/*.html") $ compile getResourceBody

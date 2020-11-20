@@ -4,8 +4,9 @@ module Pages (
 
 import Hakyll
 
-import Util
-import Template
+import Config
+import CompressHtml
+import Context
 
 mdRoute :: Routes
 mdRoute = gsubRoute "markdown/" (const "") `composeRoutes` setExtension "html"
@@ -19,13 +20,19 @@ mdCompiler path2temp ctx = pandocCompiler
 
 buildPages :: Rules()
 buildPages = do
-
-    let defaultctx = snippetField `mappend` defaultContext
-
-    match (fromGlob "**/index.md") $ do
+    -- default pages
+    match (fromRegex "^markdown/(about/index|index).md$") $ do
+        let ctx = snippetField `mappend` defaultContext
         route mdRoute
-        compile $ mdCompiler "template/default.html" defaultctx
+        compile $ mdCompiler "template/default.html" ctx
 
+    -- blog posts
     match postPattern $ do
+        let ctx = snippetField
+                `mappend` postDateContext
+                `mappend` postTagsContext
+                `mappend` archivesContext
+                `mappend` tagsContext
+                `mappend` defaultContext
         route mdRoute
-        compile $ mdCompiler "template/post.html" $ tagsContext `mappend` defaultctx
+        compile $ mdCompiler "template/post.html" ctx

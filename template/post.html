@@ -14,19 +14,28 @@ $snippet("template/snippet/navigation.html")$
 <article class='post'>
 
 <header class="post-header">
-    <h1 class="post-title"><a href="$url$">$title$</a></h1>
-    <time class="post-date" datetime="$date$">$date$</time>
-    $if(tags)$
-    <div class="post-tags">
-        tags: $for(tags)$[$tag$]$sep$ $endfor$
-    </div>
-    $endif$
+<h1 class="post-title"><a href="$url$">$title$</a></h1>
+<time class="post-date" datetime="$post-datetime$">$post-date$</time>
+$if(post-tags)$
+<div class="post-tags">tags: $post-tags$</div>
+$endif$
 </header>
 
 <div class="post-body">$body$</div>
-
 </article>
 </main>
+
+<aside class="side">
+<aside class="archives">
+<h2 class="archives-title">Archives</h2>
+$archives$
+</aside>
+
+<aside class="tags">
+<h2 class="tags-title">Tags</h2>
+$tags$
+</aside>
+</aside>
 
 <footer class="footer">
 この文書は<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">クリエイティブ・コモンズ 表示 4.0 国際 ライセンス</a>の下に提供されています。

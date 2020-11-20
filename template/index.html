@@ -8,9 +8,38 @@
 </head>
 <body>
 $snippet("template/snippet/navigation.html")$
+
 <main class="main">
-    <h1 class="main-title">$title$</h1>
-    $body$
+
+<header class="header">
+<h1 class="header-title">$title$</h1>
+</header>
+
+$for(post-list)$
+<article class="post">
+<h2 class="post-title"><a href="$url$">$title$</a></h2>
+<time class="post-date" datetime="$post-datetime$">$post-date$</time>
+$if(post-tags)$
+<div class="post-tags">tags: $post-tags$</div>
+$endif$
+</article>
+$endfor$
+
 </main>
+
+<aside class="side">
+
+<aside class="archives">
+<h2 class="archives-title">Archives</h2>
+$archives$
+</aside>
+
+<aside class="tags">
+<h2 class="tags-title">Tags</h2>
+$tags$
+</aside>
+
+</aside>
+
 </body>
 </html>

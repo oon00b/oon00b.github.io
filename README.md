@@ -16,23 +16,16 @@ stack exec site build
 * /index.html
 
     # Blog セクション
-    * /blog/index.html                 # 全記事の一覧
-        * /blog/<YYYY>/index.html        # 年別
+    * /blog/index.html                     # 全記事の一覧
+        * /blog/<YYYY>/index.html          # 年別
             * /blog/<YYYY>/<MM>/index.html # 月別
 
-            # ブログの記事をここに置く
-            * /blog/<YYYY>/<MM>/<POSTNAME>.html
+            * /blog/<YYYY>/<MM>/<POSTNAME>.html # 記事
 
-        * /blog/tags/index.html # 全タグの一覧
             * /blog/tags/<TAG>/index.html # <TAG>をつけられた記事の一覧
 
     # About セクション
     * /about/index.html
-
-    # css
-    * /css/common.css    # 汎用のスタイルを定義
-    * /css/blogpost.css  # ブログの記事で使用するcss
-    * /css/highlight.css # ソースコードのシンタックスハイライト用
 ```
 
 ## メタデータ

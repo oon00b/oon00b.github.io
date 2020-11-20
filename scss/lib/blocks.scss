@@ -1,0 +1,49 @@
+@mixin main {
+    > * {
+        margin: 2em 0;
+    }
+}
+
+@mixin post {
+    &-title {
+        font-size: 1.3em;
+        margin: 0;
+    }
+
+    &-date {
+        display: block;
+    }
+}
+
+@mixin side {
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+        flex: 1 1 10em;
+        margin: 2em 2em 2em 0;
+    }
+}
+
+@mixin archives {
+    &-title {
+        font-size: 1em;
+        margin: 0;
+    }
+
+    &-tree > &-tree, &-post {
+        padding-left: 1.5em;
+    }
+
+    &-post {
+        display: list-item;
+        list-style: disc inside;
+    }
+}
+
+@mixin tags {
+    &-title {
+        font-size: 1em;
+        margin: 0;
+    }
+}

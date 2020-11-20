@@ -1,5 +1,5 @@
-@import "common.scss";
-@import "blocks.scss";
+@import "lib/common.scss";
+@import "lib/blocks.scss";
 
 $codeblock-color: #839496;
 $codeblock-background: #002b36;
@@ -24,7 +24,21 @@ $codeblock-background: #002b36;
 .post {
     @include post;
 
+    border-bottom: thin solid;
+
     &-header {
         border-bottom: thin solid;
     }
+}
+
+.side {
+    @include side;
+}
+
+.archives {
+    @include archives;
+}
+
+.tags {
+    @include tags;
 }
