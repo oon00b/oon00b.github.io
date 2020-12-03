@@ -22,26 +22,9 @@ import qualified Data.Time as Time
 import Config
 import Archives
 
+-- YYYY-MM-DD
 postDateContext :: Context String
-postDateContext =
-    -- <a>YYYY</a>-<a>MM</a>-DD
-    let post_date = field "post-date" $ \item -> do
-            date <- getDate $ itemIdentifier item
-            let link freq txt =
-                    renderHtml
-                    $ a ! (href $ stringValue $ toUrl $ toFilePath $ archivesId freq date)
-                    $ string $ formatDate date txt
-
-                year = link Yearly "%0Y"
-                month = link Monthly "%m"
-                day = formatDate date "%d"
-            return $ year ++ "-" ++ month ++ "-" ++ day
-
-        post_datetime = field "post-datetime" $ \item -> do
-            date <- getDate $ itemIdentifier item
-            return $ formatDate date "%0Y-%m-%d"
-
-    in post_date `mappend` post_datetime
+postDateContext = dateField "post-date" "%0Y-%m-%d"
 
 -- [<a>TAG</a>], ...
 postTagsContext :: Context String
