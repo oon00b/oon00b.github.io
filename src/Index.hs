@@ -11,7 +11,7 @@ import Context
 
 indexCompiler :: Context String -> Compiler (Item String)
 indexCompiler ctx = makeItem ""
-    >>= loadAndApplyTemplate (fromFilePath "template/index.html") ctx
+    >>= loadAndApplyTemplate (fromFilePath "template/blogindex.html") ctx
     >>= relativizeUrls . fmap compressHtml
 
 buildIndex :: Rules()

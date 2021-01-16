@@ -3,29 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://creativecommons.org/licenses/by/4.0/" rel="license">
 <title>$title$</title>
-<link href="/css/post.css" rel="stylesheet">
+<link href="https://creativecommons.org/licenses/by/4.0/" rel="license">
+<link href="/css/blogpost.css" rel="stylesheet">
 <link href="/css/highlight.css" rel="stylesheet">
 </head>
-<body>
-$snippet("template/snippet/navigation.html")$
-<main class="main">
-<article class='post'>
+<body class="blog">
 
-<header class="post-header">
-<h1 class="post-title"><a href="$url$">$title$</a></h1>
+<nav class="navigation blog-navigation">
+$snippet("template/snippet/navigation.html")$
+</nav>
+
+<article class='post blog-main'>
+<h1 class="post-title">$title$</h1>
 <time class="post-date" datetime="$post-date$">$post-date$</time>
 $if(post-tags)$
 <div class="post-tags">tags: $post-tags$</div>
 $endif$
-</header>
-
 <div class="post-body">$body$</div>
 </article>
-</main>
 
-<aside class="side">
+<aside class="side blog-side">
 <aside class="archives">
 <h2 class="archives-title">Archives</h2>
 $archives$
@@ -37,8 +35,8 @@ $tags$
 </aside>
 </aside>
 
-<footer class="footer">
-この文書は<a href="https://creativecommons.org/licenses/by/4.0/" rel="license">クリエイティブ・コモンズ 表示 4.0 国際 ライセンス</a>の下に提供されています。
+<footer class="footer blog-footer">
+$snippet("template/snippet/cc-by.html")$
 </footer>
 
 </body>

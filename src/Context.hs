@@ -26,7 +26,7 @@ import Archives
 postDateContext :: Context String
 postDateContext = dateField "post-date" "%0Y-%m-%d"
 
--- [<a>TAG</a>], ...
+-- [<a>TAG</a>] ...
 postTagsContext :: Context String
 postTagsContext = field "post-tags" $ \item -> do
     tags <- buildTags (fromList $ [itemIdentifier item]) tagsId

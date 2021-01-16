@@ -21,10 +21,10 @@ mdCompiler path2temp ctx = pandocCompiler
 buildPages :: Rules()
 buildPages = do
     -- default pages
-    match (fromRegex "^markdown/(about/index|index).md$") $ do
+    match (fromRegex "^markdown/([^/]{1,}/)*index.md$") $ do
         let ctx = snippetField `mappend` defaultContext
         route mdRoute
-        compile $ mdCompiler "template/default.html" ctx
+        compile $ mdCompiler "template/pages.html" ctx
 
     -- blog posts
     match postPattern $ do
@@ -35,4 +35,4 @@ buildPages = do
                 `mappend` tagsContext
                 `mappend` defaultContext
         route mdRoute
-        compile $ mdCompiler "template/post.html" ctx
+        compile $ mdCompiler "template/blogpost.html" ctx
