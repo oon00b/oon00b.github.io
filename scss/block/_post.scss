@@ -2,7 +2,7 @@
     background: $background--main;
     padding: 0.25rem;
 
-    .post-body {
+    &-body {
         border-top: thin solid $color-border--main;
 
         @media screen {
