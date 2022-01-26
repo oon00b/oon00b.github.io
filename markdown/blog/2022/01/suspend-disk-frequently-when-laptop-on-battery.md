@@ -1,5 +1,5 @@
 ---
-title: "tlpをインストールしたラップトップで、バッテリー駆動時にディスクのサスペンドが頻発する"
+title: "tlpをインストールしたラップトップで、バッテリー駆動時にSSDのサスペンドが頻発する"
 date: 2022-01-25
 tags:
     - "GNU/Linux"
@@ -20,7 +20,7 @@ sd 0:0:0:0: [sda] Stopping disk
 ハードウェア
 
 * MacBook Air 7,2
-* ディスク: `/dev/sda`
+* SSD: `/dev/sda`
 
 ソフトウェア
 
