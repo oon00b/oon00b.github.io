@@ -3,11 +3,11 @@ name: "site"
 dependencies:
   - "base"
   - "hakyll"
-  - "skylighting-core"
   - "hakyll-sass"
   - "blaze-html"
   - "containers"
   - "time"
+  - "pandoc"
 
 source-dirs: "src"
 

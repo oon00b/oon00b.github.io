@@ -3,6 +3,7 @@ module Pages (
 ) where
 
 import Hakyll
+import qualified Text.Pandoc.Options as Pandoc
 
 import Config
 import CompressHtml
@@ -12,11 +13,13 @@ mdRoute :: Routes
 mdRoute = gsubRoute "markdown/" (const "") `composeRoutes` setExtension "html"
 
 mdCompiler :: FilePath -> Context String -> Compiler (Item String)
-mdCompiler path2temp ctx = pandocCompiler
-    >>= loadAndApplyTemplate temp ctx
+mdCompiler tempPath ctx = pandocCompilerWith defaultHakyllReaderOptions wopt
+    >>= loadAndApplyTemplate (fromFilePath tempPath) ctx
     >>= relativizeUrls
     >>= return . fmap compressHtml
-    where temp = fromFilePath path2temp
+    where wopt = defaultHakyllWriterOptions {
+        Pandoc.writerHighlightStyle = Nothing
+    }
 
 buildPages :: Rules()
 buildPages = do
