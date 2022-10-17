@@ -5,8 +5,11 @@
     gap: 2rem;
     grid-template-rows: auto 1fr;
 
-    &-main {
-        padding: 0.25rem;
-        background: $background--main;
+    @media print {
+        display: block;
+
+        & > :not(&-main) {
+            display: none;
+        }
     }
 }

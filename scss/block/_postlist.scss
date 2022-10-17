@@ -1,17 +1,10 @@
 .postList {
-    background: $background--main;
-
-    > :not(:last-child) {
-        border-bottom: thin solid $color-border--main;
-    }
-
     &-title {
         font-size: 1.3rem;
         margin: 0;
-        padding: 0.25rem;
     }
 
-    &-item {
-        padding: 0.5rem 0.25rem;
+    & > :not(:last-child) {
+        margin-block-end: 1rem;
     }
 }

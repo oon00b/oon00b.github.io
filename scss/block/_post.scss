@@ -1,21 +1,4 @@
 .post {
-    background: $background--main;
-    padding: 0.25rem;
-
-    &-body {
-        border-top: thin solid $color-border--main;
-
-        @media screen {
-            pre:not(.sourceCode) {
-                overflow-x: auto;
-            }
-        }
-
-        .sourceCode {
-            background: $background-code--skylighting;
-        }
-    }
-
     &-title {
         font-size: 1.3rem;
         margin: 0;

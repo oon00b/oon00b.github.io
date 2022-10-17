@@ -3,11 +3,6 @@
     min-width: 0;
 }
 
-html {
-    color: $color;
-    background: $background;
-}
-
 body {
     overflow-wrap: break-word;
     line-height: 1.6;
@@ -17,8 +12,13 @@ body {
 }
 
 a {
-    color: $color-link;
     text-decoration: underline;
+}
+
+@media print {
+    a {
+        color: inherit;
+    }
 }
 
 a:hover, a:focus {
@@ -29,14 +29,28 @@ a:active {
     outline: medium solid;
 }
 
+pre {
+    border: thin ridge;
+    border-radius: 0.5em;
+}
+
+:not(pre) > code {
+    border: thin ridge;
+}
+
+@media screen {
+    pre, samp {
+        overflow-x: auto;
+    }
+}
+
 pre, code, samp, kbd {
     font-size: 1em;
     font-family: monospace, monospace;
-    background: $background-code;
 }
 
 blockquote {
-    border: thin solid;
+    border-block: medium solid;
 }
 
 table {

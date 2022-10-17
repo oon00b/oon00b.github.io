@@ -5,7 +5,15 @@
     gap: 2rem;
     grid-template-rows: auto 1fr;
 
-    @media (min-width: 40rem) {
+    @media print {
+        display: block;
+
+        & > :not(&-main) {
+            display: none;
+        }
+    }
+
+    @media (min-width: 60rem) {
         grid-template-columns: auto 15rem;
         grid-template-areas:
             "navigation navigation"
