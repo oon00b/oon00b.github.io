@@ -11,14 +11,18 @@ body {
     margin: auto;
 }
 
-a {
-    text-decoration: underline;
-}
-
 @media print {
+    body {
+        font-family: serif;
+    }
+
     a {
         color: inherit;
     }
+}
+
+a {
+    text-decoration: underline;
 }
 
 a:hover, a:focus {
