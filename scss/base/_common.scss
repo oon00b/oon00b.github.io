@@ -53,8 +53,16 @@ pre, code, samp, kbd {
     font-family: monospace, monospace;
 }
 
-blockquote {
-    border-block: medium solid;
+q, blockquote {
+    font-style: italic;
+}
+
+q::before, blockquote::before {
+    content: open-quote;
+}
+
+q::after, blockquote::after {
+    content: close-quote;
 }
 
 table {
