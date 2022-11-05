@@ -9,28 +9,16 @@
     }
 
     &-body {
-        h1::before {
-            content: "# ";
+        $symbols: "";
+        @for $i from 1 through 6 {
+            $symbols: "#{$symbols}#";
+            h#{$i}::before {
+                content: "#{$symbols} ";
+            }
         }
 
-        h2::before {
-            content: "## ";
-        }
-
-        h3::before {
-            content: "### ";
-        }
-
-        h4::before {
-            content: "#### ";
-        }
-
-        h5::before {
-            content: "##### ";
-        }
-
-        h6::before {
-            content: "###### ";
+        :is(h1, h2, h3, h4, h5, h6)::before {
+            font-family: monospace;
         }
     }
 }

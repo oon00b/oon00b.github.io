@@ -33,13 +33,13 @@ a:active {
     outline: medium solid;
 }
 
-pre {
-    border: thin ridge;
-    border-radius: 0.5em;
+pre > code::before, pre > code::after {
+    display: block;
+    content: "```";
 }
 
-:not(pre) > code {
-    border: thin ridge;
+:not(pre) > code::before, :not(pre) > code::after {
+    content: "`";
 }
 
 @media screen {
@@ -53,8 +53,9 @@ pre, code, samp, kbd {
     font-family: monospace, monospace;
 }
 
-q, blockquote {
-    font-style: italic;
+kbd {
+    border-radius: 0.25em;
+    border: thin ridge;
 }
 
 q::before, blockquote::before {
@@ -63,6 +64,14 @@ q::before, blockquote::before {
 
 q::after, blockquote::after {
     content: close-quote;
+}
+
+blockquote::after {
+    text-align: end;
+}
+
+blockquote::before, blockquote::after {
+    display: block;
 }
 
 table {
