@@ -11,7 +11,7 @@ import qualified Data.Time as Time
 import Archives
 
 postPattern :: Pattern
-postPattern = fromRegex "^markdown/blog/[0-9]{4}/(1[0-2]|0[1-9])/[^/]{1,}.md$"
+postPattern = fromRegex "^markdown/blog/[0-9]{4}/(1[0-2]|0[1-9])/[^/]+/index[.]md$"
 
 archivesId :: Frequency -> Time.Day -> Identifier
 archivesId freq date = fromFilePath $

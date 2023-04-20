@@ -24,7 +24,7 @@ mdCompiler tempPath ctx = pandocCompilerWith defaultHakyllReaderOptions wopt
 buildPages :: Rules()
 buildPages = do
     -- default pages
-    match (fromRegex "^markdown/([^/]{1,}/)*index.md$") $ do
+    match (fromRegex "^markdown/(about/){0,1}index.md$") $ do
         let ctx = snippetField `mappend` defaultContext
         route mdRoute
         compile $ mdCompiler "template/pages.html" ctx
