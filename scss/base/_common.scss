@@ -1,3 +1,7 @@
+:root {
+    color-scheme: dark light;
+}
+
 * {
     box-sizing: border-box;
     min-width: 0;
@@ -33,15 +37,6 @@ a:active {
     outline: medium solid;
 }
 
-pre > code::before, pre > code::after {
-    display: block;
-    content: "```";
-}
-
-:not(pre) > code::before, :not(pre) > code::after {
-    content: "`";
-}
-
 @media screen {
     pre, samp {
         overflow-x: auto;
@@ -53,9 +48,10 @@ pre, code, samp, kbd {
     font-family: monospace, monospace;
 }
 
-kbd {
+kbd, pre, :not(pre) > code {
     border-radius: 0.25em;
-    border: thin ridge;
+    padding: 0 0.25em;
+    border: thin solid;
 }
 
 q::before, blockquote::before {

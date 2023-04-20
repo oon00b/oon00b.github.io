@@ -2,12 +2,9 @@
     display: flex;
     flex-wrap: wrap;
     align-content: start;
+    gap: 2rem;
 
     & > * {
         flex: 1 15rem;
-    }
-
-    & > :not(:last-child) {
-        margin-block-end: 2rem;
     }
 }
