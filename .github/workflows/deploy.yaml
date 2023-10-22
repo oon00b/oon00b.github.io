@@ -1,6 +1,8 @@
 name: "deploy"
 
 on:
+  # アクションを手動実行する場合必要
+  workflow_dispatch:
 
   schedule:
     # cacheが消えないよう定期的に実行する
@@ -18,13 +20,13 @@ jobs:
 
       # https://github.com/actions/checkout
       - name: "checkout master"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v4"
         with:
           ref: "master"
 
       # https://github.com/actions/cache
       - name: "cache ~/.stack, .stack-work"
-        uses: "actions/cache@v2"
+        uses: "actions/cache@v3"
         with:
           path: |
             ~/.stack
@@ -42,3 +44,5 @@ jobs:
           github_token: "${{ secrets.GITHUB_TOKEN }}"
           publish_dir: "./_site"
           publish_branch: "build"
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
