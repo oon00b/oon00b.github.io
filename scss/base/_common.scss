@@ -1,5 +1,8 @@
 :root {
     color-scheme: dark light;
+    overflow-wrap: break-word;
+    line-height: 1.6;
+    font-family: sans-serif;
 }
 
 * {
@@ -8,15 +11,42 @@
 }
 
 body {
-    overflow-wrap: break-word;
-    line-height: 1.6;
-    font-family: sans-serif;
     max-width: 98%;
     margin: auto;
 }
 
+@media screen {
+    :root {
+        color: #000000;
+        background: #ffffff;
+    }
+
+    a {
+        color: #002075;
+    }
+
+    a:visited {
+        color: #551000;
+    }
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+    :root {
+        color: #ffffff;
+        background: #000000;
+    }
+
+    a {
+        color: #d0ffdd;
+    }
+
+    a:visited {
+        color: #fff3cc;
+    }
+}
+
 @media print {
-    body {
+    :root {
         font-family: serif;
     }
 
