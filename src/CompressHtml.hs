@@ -23,7 +23,7 @@ separatePre "" = ("", "", "")
 separatePre ('<':'p':'r':'e':source) =
     let (pretxt, other) = takePre source
     in ("", "<pre" ++ pretxt, other)
-separatePre (c:source) = ([c], "", "") `mappend` separatePre source
+separatePre (c:source) = ([c], "", "") <> separatePre source
 
 -- (" ~ </pre>", after)
 takePre :: String -> (String, String)
@@ -31,8 +31,8 @@ takePre "" = ("", "")
 takePre ('<':'/':'p':'r':'e':'>':source) = ("</pre>", source)
 takePre ('<':'p':'r':'e':source) = -- <pre>が入れ子になっている場合
     let (pretxt, other) = takePre source
-    in ("<pre" ++ pretxt, "") `mappend` takePre other
-takePre (c:source) = ([c], "") `mappend` takePre source
+    in ("<pre" ++ pretxt, "") <> takePre other
+takePre (c:source) = ([c], "") <> takePre source
 
 compressSpaces :: String -> String
 compressSpaces source =

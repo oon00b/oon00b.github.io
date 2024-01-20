@@ -38,9 +38,9 @@ postTagsContext = field "post-tags" $ \item -> do
 postListContext :: Pattern -> Context String
 postListContext pattern =
     let posts = loadAll pattern >>= recentFirst
-        ctx = postDateContext
-            `mappend` postTagsContext
-            `mappend` defaultContext
+        ctx = defaultContext
+            <> postTagsContext
+            <> postDateContext
     in listField "post-list" ctx posts
 
 -- <details class="archives-tree">

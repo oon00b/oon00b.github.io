@@ -8,6 +8,7 @@ import Config
 import CompressHtml
 import Archives
 import Context
+import Css
 
 indexCompiler :: Context String -> Compiler (Item String)
 indexCompiler ctx = makeItem ""
@@ -17,16 +18,17 @@ indexCompiler ctx = makeItem ""
 buildIndex :: Rules()
 buildIndex = do
     let commonctx pattern =
-            snippetField
-            `mappend` postListContext pattern
-            `mappend` archivesContext
-            `mappend` tagsContext
-            `mappend` defaultContext
+            defaultContext
+            <> snippetField
+            <> postListContext pattern
+            <> archivesContext
+            <> tagsContext
+            <> cssField "blogindex"
 
     -- blog index
     create [fromFilePath "blog/index.html"] $ do
         let ctx = constField "title" "Blog"
-                `mappend` commonctx postPattern
+                <> commonctx postPattern
         route idRoute
         compile $ indexCompiler ctx
 
@@ -34,7 +36,7 @@ buildIndex = do
     tags <- buildTags postPattern tagsId
     tagsRules tags $ \tag pattern -> do
         let ctx = constField "title" ("Tag: " ++ tag)
-                `mappend` commonctx pattern
+                <> commonctx pattern
         route idRoute
         compile $ indexCompiler ctx
 
@@ -42,13 +44,13 @@ buildIndex = do
     yearly <- getArchives postPattern Yearly archivesId
     archivesRules yearly $ \_freq date pattern -> do
         let ctx = constField "title" (formatDate date "Archive: %0Y")
-                `mappend` commonctx pattern
+                <> commonctx pattern
         route idRoute
         compile $ indexCompiler ctx
 
     monthly <- getArchives postPattern Monthly archivesId
     archivesRules monthly $ \_freq date pattern -> do
         let ctx = constField "title" (formatDate date "Archive: %0Y/%m")
-                `mappend` commonctx pattern
+                <> commonctx pattern
         route idRoute
         compile $ indexCompiler ctx
